@@ -7,7 +7,7 @@ class Index extends React.Component {
     
     return (
       <div>
-        <h1>Fruits Index Page</h1>
+        <h1>Vegetables Index Page</h1>
         <ul>
           {vegetables.map((vegetable, i) => {
             return (
@@ -22,6 +22,9 @@ class Index extends React.Component {
             );
           })}
         </ul>
+        <nav>
+          <a href="/vegetables/new">Create a New Vegetable</a>
+        </nav>
       </div>
     );
   }

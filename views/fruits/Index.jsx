@@ -3,7 +3,7 @@ const React = require("react");
 class Index extends React.Component {
   render() {
     const { fruits } = this.props;
-    
+
     return (
       <div>
         <h1>Fruits Index Page</h1>
@@ -21,6 +21,9 @@ class Index extends React.Component {
             );
           })}
         </ul>
+        <nav>
+          <a href="/fruits/new">Create a New Fruit</a>
+        </nav>
       </div>
     );
   }
