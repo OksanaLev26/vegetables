@@ -61,6 +61,41 @@ app.get("/fruits/seed", async (req, res) => {
   }
 });
 
+app.get("/vegetables/seed", async (req, res) => {
+  try {
+    await Vegetable.create([
+      {
+        name: "tomato",
+        color: "red",
+        readyToEat: true,
+      },
+      {
+        name: "pepper",
+        color: "yellow",
+        readyToEat: false,
+      },
+      {
+        name: "carrot",
+        color: "orange",
+        readyToEat: true,
+      },
+      {
+        name: "zucchini",
+        color: "green",
+        readyToEat: false,
+      },
+      {
+        name: "cabbage",
+        color: "green",
+        readyToEat: true,
+      },
+    ]);
+    res.redirect("/vegetables");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 app.get("/fruits/", async (req, res) => {
   try {
     const fruits = await Fruit.find();
