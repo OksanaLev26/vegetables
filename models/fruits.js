@@ -1,29 +1,11 @@
-const fruits = [
-    {
-      name: "apple",
-      color: "red",
-      readyToEat: true,
-    },
-    {
-      name: "pear",
-      color: "green",
-      readyToEat: false,
-    },
-    {
-      name: "banana",
-      color: "yellow",
-      readyToEat: true,
-    },
-    {
-      name: "kumquat",
-      color: "orange",
-      readyToEat: true,
-    },
-    {
-      name: "lychee",
-      color: "fucsia",
-      readyToEat: true,
-    },
-  ];
+const mongoose = require("mongoose");
 
-  module.exports = fruits;
+const fruitSchema = new mongoose.Schema({
+  name: { type: String, required: [true, "Fruit name is required"] },
+  color: { type: String, required: true },
+  readyToEat: { type: Boolean },
+});
+
+const Fruit = mongoose.model("Fruit", fruitSchema);
+
+module.exports = Fruit;

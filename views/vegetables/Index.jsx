@@ -1,23 +1,32 @@
 const React = require("react");
-const vegetables = require("../../models/vegetables");
+const DefaultLayout = require("../layouts/default");
+// const vegetables = require("../../models/vegetables");
 
 class Index extends React.Component {
   render() {
-    const { vegetable } = this.props;
+    const { vegetables } = this.props;
     
     return (
-      <div>
-        <h1>Vegetables Index Page</h1>
+      <DefaultLayout title={"Vegetables Index Page"}>
         <ul>
-          {vegetables.map((vegetable, i) => {
+        {vegetables.map((vegetable, i) => {
             return (
-              <li>
-                The <a href={`/vegetables/${i}`}>{vegetable.name}</a> is {vegetable.color}{" "}
-                <br></br>
-                {vegetable.readyToEat
-                  ? `It is ready to eat`
-                  : `It is not ready to eat`}
-                <br />
+              <li key={i}>
+                The <a href={`/vegetables/${vegetable.id}`}>{vegetable.name}</a>
+                {" "} is {vegetable.color}.{" "}
+                {vegetable.readyToEat ? (
+                  <span>It is ready to eat</span>
+                ) : (
+                  <span> It is not ready to eat </span>
+                )}
+                {/* Your Delete Form Goes Here  It's incomplete we will fix below*/}
+                <form
+                  action={`/vegetables/${vegetable._id}?_method=DELETE`}
+                  method="POST"
+                >
+                  <input type="submit" value="DELETE" />
+                </form>
+                <a href={`/vegetables/${vegetable._id}/edit`}>Edit This Vegetable</a>
               </li>
             );
           })}
@@ -25,7 +34,7 @@ class Index extends React.Component {
         <nav>
           <a href="/vegetables/new">Create a New Vegetable</a>
         </nav>
-      </div>
+      </DefaultLayout>
     );
   }
 }
