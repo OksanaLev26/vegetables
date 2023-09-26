@@ -4,6 +4,7 @@ const app = express();
 const jsxEngine = require("jsx-view-engine");
 const dotenv = require("dotenv");
 const methodOverride = require("method-override");
+app.use(express.static('public')); //tells express to try to match requests with files in the directory called 'public'
 
 // const fruits = require("./models/fruits.js"); //NOTE: it must start with ./ if it's just a file, not an NPM package
 const Fruit = require("./models/fruits");
